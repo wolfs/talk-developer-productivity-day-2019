@@ -1,0 +1,38 @@
+= <TITLE>
+:title-slide-background-image: title.jpeg
+:title-slide-transition: zoom
+:title-slide-transition-speed: fast
+:revnumber: {project-version}
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../java]
+:deckjs_transition: fade
+:navigation:
+:menu:
+:status:
+
+https://twitter.com/wolfs42[Stefan Wolf (@wolfs42)], Gradle
+
+== Who am I
+
+[source,groovy]
+----
+speaker {
+    name 'Stefan Wolf'
+    company 'Gradle Inc'
+    title 'Senior Software Engineer'
+    past [
+        'TNG Technology Consulting',
+        'Jenkins Committer'
+    ],
+    twitter '@wolfs42',
+    github 'wolfs'
+}
+----
+
+== Thank you
+
+* Slides: https://wolfs.github.io/<repository-name>
+* Webinars
+* https://www.youtube.com/channel/UCvClhveoEjokKIuBAsSjEwQ/videos[Youtube channel]
+* Blog: https://gradle.org/blog[]
+* Gradle Enterprise: https://gradle.com[]
