@@ -1,4 +1,4 @@
-= <TITLE>
+= Schnelle und zuverlässige Builds mit Maven und Gradle
 :title-slide-background-image: title.jpeg
 :title-slide-transition: zoom
 :title-slide-transition-speed: fast
@@ -31,7 +31,7 @@ speaker {
 
 == Thank you
 
-* Slides: https://wolfs.github.io/<repository-name>
+* Slides: https://wolfs.github.io/talk-developer-productivity-day-2019
 * Webinars
 * https://www.youtube.com/channel/UCvClhveoEjokKIuBAsSjEwQ/videos[Youtube channel]
 * Blog: https://gradle.org/blog[]
