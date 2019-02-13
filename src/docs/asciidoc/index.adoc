@@ -32,7 +32,6 @@ speaker {
 == Gradle Inc.
 
 * Build Happiness
-* Employs full time engineers
 * Products
 ** Gradle Build Tool
 ** Gradle Enterprise
@@ -40,7 +39,7 @@ speaker {
 == Build und Entwicklerproduktivität
 
 * Probleme mit dem Build: 20% Entwicklungszeit
-* Langsame Builds: Arbeitszeit, Fokus-verlust
+* Langsame Builds: Arbeitszeit, Fokusverlust
 
 == Schnelle Builds
 === Schnelle Builds
@@ -81,7 +80,7 @@ image::build_caching.svg[width=380px, height=auto]
 
 === Graphen
 
-* Vergleich largeJavaMulti Gradle/Maven clean build mit/ohne cache
+* TODO: Vergleich largeJavaMulti Gradle/Maven clean build mit/ohne cache
 
 === Gradle
 
@@ -89,7 +88,6 @@ image::build_caching.svg[width=380px, height=auto]
 [source,text]
 ----
 $> gradle --build-cache assemble
-Build cache is an incubating feature.
 :compileJava FROM-CACHE
 :processResources
 :classes
@@ -102,7 +100,7 @@ BUILD SUCCESSFUL
 === Gradle
 
 * Stabil für Java, Groovy, Scala, C++ und Swift Projekte
-* Kompilieren und testen
+* Kompilieren, Testen und Codeanalyse
 * Performantes Backend von Gradle
 * Dockerhub: https://hub.docker.com/r/gradle/build-cache-node/[gradle/build-cache-node]
 
@@ -128,8 +126,7 @@ BUILD SUCCESSFUL
 * Für Entwickler und Build Master
 
 === Build Scans - Demo
-// TODO: Update links
-* https://enterprise-demo.gradle.com/s/4em4d65gvljsm[Build Scan]
+* https://e.grdev.net/s/37h3dlueevh2s[Build Scan]
 * https://e.grdev.net/scans[Scan Liste]
 * https://e.grdev.net/scans?tags=local[Entwickler Builds]
 
@@ -144,8 +141,42 @@ BUILD SUCCESSFUL
 
 * Maven/Gradle
 * Auf scans.gradle.com öffentlich/umsonst
+** https://scans.gradle.com/s/nq7w6cjm72mak/
 ** Ohne Build comparison
 * Eigene Gradle Enterprise Instanz
+
+=== Gradle
+
+[source,text]
+----
+> gradle build --scan
+...
+BUILD SUCCESSFUL in 8m 22s
+418 actionable tasks: 112 executed, 48 from cache, 258 up-to-date
+
+Publishing build scan...
+https://scans.gradle.com/s/lbmn7n4dngqgq
+----
+
+=== Maven
+
+* Extension in `.mvn`
+
+[source,text]
+----
+> mvn package
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.507 s
+[INFO] Finished at: 2019-02-13T18:45:26+01:00
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] Publishing build scan...
+[INFO] https://scans.gradle.com/s/4r5fubfnzjo54
+[INFO]
+----
 
 === Performance dashboard
 
