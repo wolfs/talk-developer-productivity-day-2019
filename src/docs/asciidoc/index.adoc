@@ -12,7 +12,7 @@ ifndef::sourcedir[:sourcedir: ../java]
 
 https://twitter.com/wolfs42[Stefan Wolf (@wolfs42)], Gradle
 
-== Who am I
+== Wer bin ich
 
 [source,groovy]
 ----
@@ -29,7 +29,152 @@ speaker {
 }
 ----
 
-== Thank you
+== Gradle Inc.
+
+* Build Happiness
+* Employs full time engineers
+* Products
+** Gradle Build Tool
+** Gradle Enterprise
+
+== Build und Entwicklerproduktivität
+
+* Probleme mit dem Build: 20% Entwicklungszeit
+* Langsame Builds: Arbeitszeit, Fokus-verlust
+
+== Schnelle Builds
+=== Schnelle Builds
+
+* Schneller = weniger machen
+* Ergebnisse wiederverwenden!
+** Inkrementeller Build
+** Build Cache
+
+=== Inkrementeller Build
+
+* Gradle :)
+* Maven :(
+
+=== Build Cache
+
+Gradle kann Ergebnisse +
+des *letzten Mals*  +
+als *dieser Build* +
+ auf *diesem Computer* +
+ausgeführt wurde wiederverwenden.
+
+image::task_inputs_outputs.svg[width=380px, height=auto]
+
+=== das geht noch besser
+
+=== Wieso nicht...
+
+von *irgendwann*  +
+wenn *irgendein Build* +
+ *irgendwo* ausgeführt wurde.
+
+image::build_caching.svg[width=380px, height=auto]
+
+=== Noch besser
+
+* Maven und Gradle
+
+=== Graphen
+
+* Vergleich largeJavaMulti Gradle/Maven clean build mit/ohne cache
+
+=== Gradle
+
+[%step]
+[source,text]
+----
+$> gradle --build-cache assemble
+Build cache is an incubating feature.
+:compileJava FROM-CACHE
+:processResources
+:classes
+:jar
+:assemble
+
+BUILD SUCCESSFUL
+----
+
+=== Gradle
+
+* Stabil für Java, Groovy, Scala, C++ und Swift Projekte
+* Kompilieren und testen
+* Performantes Backend von Gradle
+* Dockerhub: https://hub.docker.com/r/gradle/build-cache-node/[gradle/build-cache-node]
+
+=== Maven
+
+* Eigene Extension
+* Release: Anfang März
+* compile und surefire/failsafe plugins
+
+== Zuverlässige Builds
+
+=== Anforderungen
+
+* Daten um Verbesserungen/Verschlechterungen festzustellen
+** Entwickler- und CI-Builds
+** Zuverlässigkeit
+** Geschwindigkeit
+
+=== Was sind Build Scans?
+
+* Aufzeichnung was in einem Build passiert ist
+* Permanente und teilbare URLs
+* Für Entwickler und Build Master
+
+=== Build Scans - Demo
+// TODO: Update links
+* https://enterprise-demo.gradle.com/s/4em4d65gvljsm[Build Scan]
+* https://e.grdev.net/scans[Scan Liste]
+* https://e.grdev.net/scans?tags=local[Entwickler Builds]
+
+[NOTE.speaker]
+--
+* Navigate to summary, open performance tab, open timeline tab, open plugins view
+* Show scan list
+* Build categorization via Tags
+--
+
+=== Build scans - Anforderungen
+
+* Maven/Gradle
+* Auf scans.gradle.com öffentlich/umsonst
+** Ohne Build comparison
+* Eigene Gradle Enterprise Instanz
+
+=== Performance dashboard
+
+* Beispiel: See cache regression
+
+=== Cache misses
+
+* Eigene Tags für unerwartete Cache misses
+* Beispiel Gradle Build
+
+=== Eigene Analysen
+
+* Export API benutzen!
+
+[NOTE.speaker]
+--
+* Gradle Enterprise wird einige Analysen bekommen
+* Gradle Enterprise soll kein BI Tool werden - gute Einsichten out-of-the-box, der Rest via Export API möglich
+--
+
+=== Teuerste Tasks
+
+* See BigQuery
+
+=== Häufigste Build Fehler
+
+* Beispiel für gradle/gradle
+
+== Vielen Dank!
 
 * Slides: https://wolfs.github.io/talk-developer-productivity-day-2019
 * Webinars
