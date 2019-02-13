@@ -54,7 +54,7 @@ speaker {
 * Gradle :)
 * Maven :(
 
-=== Build Cache
+=== Inkrementeller Build
 
 Gradle kann Ergebnisse +
 des *letzten Mals*  +
@@ -107,8 +107,12 @@ BUILD SUCCESSFUL
 === Maven
 
 * Eigene Extension
-* Release: Anfang März
-* compile und surefire/failsafe plugins
+* Release: Anfang März mit Gradle Enterprise 2019.1
+  - compile/test-compile und surefire/failsafe plugins
+* Geplant:
+  - Unterstützung für weitere häufig verwendete Mojos
+  - API zum Annotieren von Inputs/Outputs eigener Mojos
+  - SPI um Mojos cacheable zu machen, die nicht von Haus aus unterstützt werden oder deren Source Code nicht geändert werden kann
 
 == Zuverlässige Builds
 
