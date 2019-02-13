@@ -32,7 +32,7 @@ speaker {
 == Gradle Inc.
 
 * Build Happiness
-* Products
+* Produkte
 ** Gradle Build Tool
 ** Gradle Enterprise
 
@@ -144,7 +144,7 @@ BUILD SUCCESSFUL
 === Build scans - Anforderungen
 
 * Maven/Gradle
-* Auf scans.gradle.com öffentlich/umsonst
+* Auf scans.gradle.com öffentlich/gratis
 ** https://scans.gradle.com/s/nq7w6cjm72mak/
 ** Ohne Build comparison
 * Eigene Gradle Enterprise Instanz
@@ -153,7 +153,7 @@ BUILD SUCCESSFUL
 
 [source,text]
 ----
-> gradle build --scan
+$> gradle build --scan
 ...
 BUILD SUCCESSFUL in 8m 22s
 418 actionable tasks: 112 executed, 48 from cache, 258 up-to-date
@@ -168,7 +168,7 @@ https://scans.gradle.com/s/lbmn7n4dngqgq
 
 [source,text]
 ----
-> mvn package
+$> mvn package
 ...
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -192,10 +192,16 @@ https://scans.gradle.com/s/lbmn7n4dngqgq
 
 * Eigene Tags für unerwartete Cache misses
 * Beispiel Gradle Build
+* https://e.grdev.net/scans?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.tags=cache_miss[Alle Cache Misses]
+* https://e.grdev.net/s/asqxkwl6ib46y[Ein Fall]
+* https://e.grdev.net/c/asqxkwl6ib46y/ea6nucbz4bvf6/task-inputs?toggledFileChanges=WyI3Z2hjdWhyb3pscHdtLWZpbGUtaW5wdXQtMCIsIjdnaGN1aHJvemxwd20tMC0wIiwiZmt2dXk3cXlqZ3Rtby1maWxlLWlucHV0LTAiLCJma3Z1eTdxeWpndG1vLTAtMCIsInhqeGRhcnl5emJzeXEtZmlsZS1pbnB1dC0wIiwieGp4ZGFyeXl6YnN5cS0wLTAiXQ#change-xjxdaryyzbsyq-0-0-0[Comparison]
 
 === Eigene Analysen
 
 * Export API benutzen!
+* Unsere Pipeline
+
+image::build-analysis-data-pipeline.png[width=80%, height=auto]
 
 [NOTE.speaker]
 --
@@ -203,13 +209,9 @@ https://scans.gradle.com/s/lbmn7n4dngqgq
 * Gradle Enterprise soll kein BI Tool werden - gute Einsichten out-of-the-box, der Rest via Export API möglich
 --
 
-=== Teuerste Tasks
+=== Dashboard
 
-* See BigQuery
-
-=== Häufigste Build Fehler
-
-* Beispiel für gradle/gradle
+image::build-dashboard.png[height=auto]
 
 == Vielen Dank!
 
