@@ -180,7 +180,9 @@ https://scans.gradle.com/s/lbmn7n4dngqgq
 
 === Performance dashboard
 
-* Beispiel: See cache regression
+* Beispiel: Performance Regression
+* https://e.grdev.net/scans/performance?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.startTimeMax=1549321199999&search.startTimeMin=1548543600000&search.tags=CI&search.tags=not:RERUN_TESTS&search.tags=master&search.tags=SanityCheck[Letzte Woche]
+* https://e.grdev.net/scans/performance?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.startTimeMax=1550080479731&search.startTimeMin=1549475679731&search.tags=CI&search.tags=not:RERUN_TESTS&search.tags=master&search.tags=SanityCheck[Aktuell]
 
 === Cache misses
 
