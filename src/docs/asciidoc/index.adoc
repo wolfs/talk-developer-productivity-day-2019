@@ -24,7 +24,7 @@ speaker {
         'TNG Technology Consulting',
         'Jenkins Committer'
     ],
-    twitter '@wolfs42',
+    twitter '@wolfs42'
     github 'wolfs'
 }
 ----
@@ -141,12 +141,12 @@ BUILD SUCCESSFUL
 * Build categorization via Tags
 --
 
-=== Build scans - Anforderungen
+=== Build Scans - Anforderungen
 
 * Maven/Gradle
 * Auf scans.gradle.com öffentlich/gratis
 ** https://scans.gradle.com/s/nq7w6cjm72mak/
-** Ohne Build comparison
+** Ohne Build Comparison
 * Eigene Gradle Enterprise Instanz
 
 === Gradle
@@ -182,19 +182,19 @@ $> mvn package
 [INFO]
 ----
 
-=== Performance dashboard
+=== Performance Dashboard
 
 * Beispiel: Performance Regression
 * https://e.grdev.net/scans/performance?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.startTimeMax=1549321199999&search.startTimeMin=1548543600000&search.tags=CI&search.tags=not:RERUN_TESTS&search.tags=master&search.tags=SanityCheck[Letzte Woche]
 * https://e.grdev.net/scans/performance?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.startTimeMax=1550080479731&search.startTimeMin=1549475679731&search.tags=CI&search.tags=not:RERUN_TESTS&search.tags=master&search.tags=SanityCheck[Aktuell]
 
-=== Cache misses
+=== Cache Misses
 
-* Eigene Tags für unerwartete Cache misses
-* Beispiel Gradle Build
-* https://e.grdev.net/scans?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.tags=cache_miss[Alle Cache Misses]
-* https://e.grdev.net/s/asqxkwl6ib46y[Ein Fall]
-* https://e.grdev.net/c/asqxkwl6ib46y/ea6nucbz4bvf6/task-inputs?toggledFileChanges=WyI3Z2hjdWhyb3pscHdtLWZpbGUtaW5wdXQtMCIsIjdnaGN1aHJvemxwd20tMC0wIiwiZmt2dXk3cXlqZ3Rtby1maWxlLWlucHV0LTAiLCJma3Z1eTdxeWpndG1vLTAtMCIsInhqeGRhcnl5emJzeXEtZmlsZS1pbnB1dC0wIiwieGp4ZGFyeXl6YnN5cS0wLTAiXQ#change-xjxdaryyzbsyq-0-0-0[Comparison]
+* Eigene Tags für unerwartete Cache Misses
+* Beispiel: Gradle Build
+  - https://e.grdev.net/scans?list.offset=0&list.size=50&list.sortColumn=startTime&list.sortOrder=desc&search.tags=cache_miss[Alle Cache Misses]
+  - https://e.grdev.net/s/asqxkwl6ib46y[Ein Fall]
+  - https://e.grdev.net/c/asqxkwl6ib46y/ea6nucbz4bvf6/task-inputs?toggledFileChanges=WyI3Z2hjdWhyb3pscHdtLWZpbGUtaW5wdXQtMCIsIjdnaGN1aHJvemxwd20tMC0wIiwiZmt2dXk3cXlqZ3Rtby1maWxlLWlucHV0LTAiLCJma3Z1eTdxeWpndG1vLTAtMCIsInhqeGRhcnl5emJzeXEtZmlsZS1pbnB1dC0wIiwieGp4ZGFyeXl6YnN5cS0wLTAiXQ#change-xjxdaryyzbsyq-0-0-0[Comparison]
 
 === Eigene Analysen
 
