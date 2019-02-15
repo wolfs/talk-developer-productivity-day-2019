@@ -1,0 +1,22 @@
+scenario,cleanAssembleCached
+version,maven
+tasks,clean package -Dmaven.test.skip=true -T 4 -s settings.xml
+warm-up build #1,9783
+warm-up build #2,9711
+measured build #1,9619
+measured build #2,9533
+measured build #3,9605
+measured build #4,9675
+measured build #5,9524
+measured build #6,9491
+measured build #7,9505
+measured build #8,9889
+measured build #9,9668
+measured build #10,9779
+mean,9628.8
+min,9491.0
+25th percentile,9519.25
+median,9612.0
+75th percentile,9701.0
+max,9889.0
+stddev,128.70016835005825

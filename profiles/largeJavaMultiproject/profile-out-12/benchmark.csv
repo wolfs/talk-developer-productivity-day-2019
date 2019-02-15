@@ -1,0 +1,23 @@
+scenario,nonAbiChange
+version,5.3-20190211022529+0000
+tasks,assemble
+warm-up build #1,46264
+warm-up build #2,3890
+warm-up build #3,3031
+measured build #1,3151
+measured build #2,2511
+measured build #3,2547
+measured build #4,2813
+measured build #5,2334
+measured build #6,2218
+measured build #7,2034
+measured build #8,2363
+measured build #9,2126
+measured build #10,2082
+mean,2417.9
+min,2034.0
+25th percentile,2115.0
+median,2348.5
+75th percentile,2613.5
+max,3151.0
+stddev,351.86817291581104

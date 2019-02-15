@@ -1,0 +1,14 @@
+scenario,cleanTest
+version,maven
+tasks,clean test -T 4
+warm-up build #1,802483
+measured build #1,800812
+measured build #2,799630
+measured build #3,799778
+mean,800073.3333333334
+min,799630.0
+25th percentile,799630.0
+median,799778.0
+75th percentile,800812.0
+max,800812.0
+stddev,643.9699785963111

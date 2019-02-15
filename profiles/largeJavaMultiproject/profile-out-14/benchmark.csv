@@ -1,0 +1,17 @@
+scenario,nonAbiChange
+version,maven
+tasks,clean package -Dmaven.test.skip=true -T 4 -s settings.xml
+warm-up build #1,31341
+warm-up build #2,26221
+warm-up build #3,26004
+measured build #1,26251
+measured build #2,26171
+measured build #3,26257
+measured build #4,26452
+mean,26282.75
+min,26171.0
+25th percentile,26191.0
+median,26254.0
+75th percentile,26403.25
+max,26452.0
+stddev,119.44978024257726

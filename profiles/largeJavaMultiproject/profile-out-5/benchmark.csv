@@ -1,0 +1,23 @@
+scenario,cleanAssembleCached
+version,5.3-20190211022529+0000
+tasks,clean assemble
+warm-up build #1,47172
+warm-up build #2,7482
+warm-up build #3,5596
+measured build #1,5230
+measured build #2,5104
+measured build #3,5102
+measured build #4,4954
+measured build #5,5216
+measured build #6,4820
+measured build #7,4748
+measured build #8,4589
+measured build #9,4744
+measured build #10,4675
+mean,4918.2
+min,4589.0
+25th percentile,4726.75
+median,4887.0
+75th percentile,5132.0
+max,5230.0
+stddev,233.80086493519318

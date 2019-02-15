@@ -1,0 +1,15 @@
+scenario,cleanTest
+version,5.3-20190211022529+0000
+tasks,clean test
+warm-up build #1,202097
+warm-up build #2,178954
+measured build #1,179961
+measured build #2,179206
+measured build #3,178560
+mean,179242.33333333334
+min,178560.0
+25th percentile,178560.0
+median,179206.0
+75th percentile,179961.0
+max,179961.0
+stddev,701.2063414811173

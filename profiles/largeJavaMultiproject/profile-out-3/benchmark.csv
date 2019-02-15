@@ -1,0 +1,15 @@
+scenario,cleanAssemble
+version,5.3-20190211022529+0000
+tasks,clean assemble
+warm-up build #1,52023
+warm-up build #2,30832
+measured build #1,28753
+measured build #2,29119
+measured build #3,28645
+mean,28839.0
+min,28645.0
+25th percentile,28645.0
+median,28753.0
+75th percentile,29119.0
+max,29119.0
+stddev,248.42705166708396

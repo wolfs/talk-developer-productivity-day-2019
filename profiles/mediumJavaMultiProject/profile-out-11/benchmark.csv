@@ -1,0 +1,14 @@
+scenario,cleanAssemble
+version,maven
+tasks,clean package -Dmaven.test.skip=true -T 4
+warm-up build #1,62556
+measured build #1,62043
+measured build #2,61853
+measured build #3,62011
+mean,61969.0
+min,61853.0
+25th percentile,61853.0
+median,62011.0
+75th percentile,62043.0
+max,62043.0
+stddev,101.72511980823616

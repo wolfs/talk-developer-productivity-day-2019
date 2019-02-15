@@ -1,0 +1,24 @@
+scenario,cleanTestCached
+version,5.3-20190211022529+0000
+tasks,clean test
+warm-up build #1,57307
+warm-up build #2,2956
+warm-up build #3,3025
+warm-up build #4,2591
+measured build #1,2345
+measured build #2,2185
+measured build #3,2446
+measured build #4,2111
+measured build #5,2052
+measured build #6,1991
+measured build #7,2292
+measured build #8,2056
+measured build #9,2008
+measured build #10,1973
+mean,2145.9
+min,1973.0
+25th percentile,2003.75
+median,2083.5
+75th percentile,2305.25
+max,2446.0
+stddev,164.5184555672166

@@ -1,0 +1,17 @@
+scenario,cleanTestCached
+version,maven
+tasks,clean test -T 4 -s settings.xml
+warm-up build #1,138002
+warm-up build #2,11829
+measured build #1,11448
+measured build #2,11857
+measured build #3,11919
+measured build #4,11747
+measured build #5,11978
+mean,11789.8
+min,11448.0
+25th percentile,11597.5
+median,11857.0
+75th percentile,11948.5
+max,11978.0
+stddev,209.33633225028092
