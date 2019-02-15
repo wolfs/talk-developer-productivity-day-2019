@@ -78,9 +78,10 @@ image::build_caching.svg[width=380px, height=auto]
 
 * Maven und Gradle
 
-=== Graphen
+[%notitle]
+=== Maven vs. Gradle
 
-* TODO: Vergleich largeJavaMulti Gradle/Maven clean build mit/ohne cache
+image::maven-vs-gradle.png[height=auto]
 
 === Gradle
 
@@ -109,10 +110,14 @@ BUILD SUCCESSFUL
 * Eigene Extension
 * Release: Anfang März mit Gradle Enterprise 2019.1
   - compile/test-compile und surefire/failsafe plugins
+
+[NOTE.speaker]
+--
 * Geplant:
   - Unterstützung für weitere häufig verwendete Mojos
   - API zum Annotieren von Inputs/Outputs eigener Mojos
   - SPI um Mojos cacheable zu machen, die nicht von Haus aus unterstützt werden oder deren Source Code nicht geändert werden kann
+--
 
 == Zuverlässige Builds
 
@@ -199,7 +204,7 @@ $> mvn package
 === Eigene Analysen
 
 * Export API benutzen!
-* Unsere Pipeline
+* https://github.com/gradle/build-analysis-demo
 
 image::build-analysis-data-pipeline.png[width=80%, height=auto]
 
@@ -213,10 +218,15 @@ image::build-analysis-data-pipeline.png[width=80%, height=auto]
 
 image::build-dashboard.png[height=auto]
 
+[NOTE.speaker]
+--
+Über Flaky Test reden.
+--
+
 == Vielen Dank!
 
 * Slides: https://wolfs.github.io/talk-developer-productivity-day-2019
-* Webinars
+* https://gradle.com/blog/[Webinars]
 * https://www.youtube.com/channel/UCvClhveoEjokKIuBAsSjEwQ/videos[Youtube channel]
 * Blog: https://gradle.org/blog[]
 * Gradle Enterprise: https://gradle.com[]
