@@ -38,8 +38,30 @@ speaker {
 
 == Build und Entwicklerproduktivität
 
-* Probleme mit dem Build: 20% Entwicklungszeit
-* Langsame Builds: Arbeitszeit, Fokusverlust
+* 20% Buildfehlschläge
+  - Fixen 5-10% Teamzeit
+* Langsam
+  - Pro Minute 4% Teamzeit
+* Unzuverlässig: 5% Teamzeit
+
+[NOTE.speaker]
+--
+Why is the Build so critical?
+
+Builds are executed many, many times a day to constantly transform new code into software, to test it, to run it, to get any kind of feedback. The large teams build up to 100000 times a day.
+
+Builds are code written on top of a build system, often hundred thousands or even millions of lines of code that are constantly evolving. The input of the build is constantly changing and affecting its efficiency. If such a build is not continuously managed and monitored, performance and reliability issues will severely affect the development productivity.
+
+A single build execution takes a non-trivial amount of time, easily several minutes, often more than that. Waiting for the build to finish is often dead time for developers. One minute of extra build time per build destroys in average 4% of engineering capacity.
+
+It is the job of the build to integrate all the latest code changes, run the tests and other checks to make sure that everything is still working. In average 20% of all builds fail because of code defects. This is fine and is actually the job of the build. But it often takes way too long to find the cause for such a failure. Easily 5-10% of engineering capacity are spend on this. Netflix has done internal studies that show that this consumes 20% of their engineering capacity.
+
+The build code itself has often reliability issues. This is comparable to the assembly line and machines in a factory not working properly. Those problems are very hard to debug and can cause a lot of harm. Depending on the organization this can destroy 5% or more of their engineering capacity.
+
+The build touches everything related to software development and provides a unique and valuable set of data if harvested. Not using this data makes it impossible to do develop software efficiently.
+
+Every software team on the planet is severely affected by all those issues including a deep lack of insight. This is why we build GE.
+--
 
 == Schnelle Builds
 === Schnelle Builds
@@ -214,9 +236,15 @@ image::build-analysis-data-pipeline.png[width=80%, height=auto]
 * Gradle Enterprise soll kein BI Tool werden - gute Einsichten out-of-the-box, der Rest via Export API möglich
 --
 
+[%notitle]
 === Dashboard
 
 image::build-dashboard.png[height=auto]
+
+[%notitle]
+=== Dashboard
+
+image::test-analytics.png[height=auto]
 
 [NOTE.speaker]
 --
@@ -226,7 +254,8 @@ image::build-dashboard.png[height=auto]
 == Vielen Dank!
 
 * Slides: https://wolfs.github.io/talk-developer-productivity-day-2019
-* https://gradle.com/blog/[Webinars]
+* https://gradle.org/training/[]
+  - Build Cache Deep Dive
+  - Maven + Gradle Enterprise
 * https://www.youtube.com/channel/UCvClhveoEjokKIuBAsSjEwQ/videos[Youtube channel]
-* Blog: https://gradle.org/blog[]
 * Gradle Enterprise: https://gradle.com[]
