@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>Schnelle und zuverlässige Builds mit Maven und Gradle</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/gradle.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-transition="zoom" data-transition-speed="fast" data-background-image="./images/title.jpeg"><h1>Schnelle und zuverlässige Builds mit Maven und Gradle</h1><div class="preamble"><div class="paragraph"><p><a href="https://twitter.com/wolfs42">Stefan Wolf (@wolfs42)</a>, Gradle</p></div></div></section>
+<section id="wer-bin-ich"><h2>Wer bin ich</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">speaker {
+    name 'Stefan Wolf'
+    company 'Gradle Inc'
+    title 'Senior Software Engineer'
+    past [
+        'TNG Technology Consulting',
+        'Jenkins Committer'
+    ],
+    twitter '@wolfs42'
+    github 'wolfs'
+}</code></pre></div></div></section>
+<section id="gradle-inc"><h2>Gradle Inc.</h2><div class="ulist"><ul><li><p>Build Happiness</p></li><li><p>Produkte</p><div class="ulist"><ul><li><p>Gradle Build Tool</p></li><li><p>Gradle Enterprise</p></li></ul></div></li></ul></div></section>
+<section id="build-und-entwicklerproduktivitt"><h2>Build und Entwicklerproduktivität</h2><div class="ulist"><ul><li><p>20% Buildfehlschläge</p><div class="ulist"><ul><li><p>Fixen 5-10% Teamzeit</p></li></ul></div></li><li><p>Langsam</p><div class="ulist"><ul><li><p>Pro Minute 4% Teamzeit</p></li></ul></div></li><li><p>Unzuverlässig: 5% Teamzeit</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Why is the Build so critical?</p></div>
+<div class="paragraph"><p>Builds are executed many, many times a day to constantly transform new code into software, to test it, to run it, to get any kind of feedback. The large teams build up to 100000 times a day.</p></div>
+<div class="paragraph"><p>Builds are code written on top of a build system, often hundred thousands or even millions of lines of code that are constantly evolving. The input of the build is constantly changing and affecting its efficiency. If such a build is not continuously managed and monitored, performance and reliability issues will severely affect the development productivity.</p></div>
+<div class="paragraph"><p>A single build execution takes a non-trivial amount of time, easily several minutes, often more than that. Waiting for the build to finish is often dead time for developers. One minute of extra build time per build destroys in average 4% of engineering capacity.</p></div>
+<div class="paragraph"><p>It is the job of the build to integrate all the latest code changes, run the tests and other checks to make sure that everything is still working. In average 20% of all builds fail because of code defects. This is fine and is actually the job of the build. But it often takes way too long to find the cause for such a failure. Easily 5-10% of engineering capacity are spend on this. Netflix has done internal studies that show that this consumes 20% of their engineering capacity.</p></div>
+<div class="paragraph"><p>The build code itself has often reliability issues. This is comparable to the assembly line and machines in a factory not working properly. Those problems are very hard to debug and can cause a lot of harm. Depending on the organization this can destroy 5% or more of their engineering capacity.</p></div>
+<div class="paragraph"><p>The build touches everything related to software development and provides a unique and valuable set of data if harvested. Not using this data makes it impossible to do develop software efficiently.</p></div>
+<div class="paragraph"><p>Every software team on the planet is severely affected by all those issues including a deep lack of insight. This is why we build GE.</p></div></aside></section>
+<section><section id="schnelle-builds"><h2>Schnelle Builds</h2></section><section id="schnelle-builds-2"><h2>Schnelle Builds</h2><div class="ulist"><ul><li><p>Schneller = weniger machen</p></li><li><p>Ergebnisse wiederverwenden!</p><div class="ulist"><ul><li><p>Inkrementeller Build</p></li><li><p>Build Cache</p></li></ul></div></li></ul></div></section><section id="inkrementeller-build"><h2>Inkrementeller Build</h2><div class="ulist"><ul><li><p>Gradle :)</p></li><li><p>Maven :(</p></li></ul></div></section><section id="inkrementeller-build-2"><h2>Inkrementeller Build</h2><div class="paragraph"><p>Gradle kann Ergebnisse<br />
+des <strong>letzten Mals</strong> <br />
+als <strong>dieser Build</strong><br />
+ auf <strong>diesem Computer</strong><br />
+ausgeführt wurde wiederverwenden.</p></div>
+<div class="imageblock" style=""><img src="./images/task_inputs_outputs.svg" alt="task inputs outputs" width="380px" height="auto" /></div></section><section id="das-geht-noch-besser"><h2>das geht noch besser</h2></section><section id="wieso-nicht"><h2>Wieso nicht&#8230;&#8203;</h2><div class="paragraph"><p>von <strong>irgendwann</strong> <br />
+wenn <strong>irgendein Build</strong><br />
+ <strong>irgendwo</strong> ausgeführt wurde.</p></div>
+<div class="imageblock" style=""><img src="./images/build_caching.svg" alt="build caching" width="380px" height="auto" /></div></section><section id="noch-besser"><h2>Noch besser</h2><div class="ulist"><ul><li><p>Maven und Gradle</p></li></ul></div></section><section id="maven-vs-gradle"><div class="imageblock" style=""><img src="./images/maven-vs-gradle.png" alt="maven vs gradle" width="1280" height="auto" /></div></section><section id="gradle"><h2>Gradle</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="text language-text">$&gt; gradle --build-cache assemble
+:compileJava FROM-CACHE
+:processResources
+:classes
+:jar
+:assemble
+
+BUILD SUCCESSFUL</code></pre></div></div></section><section id="gradle-2"><h2>Gradle</h2><div class="ulist"><ul><li><p>Stabil für Java, Groovy, Scala, C++ und Swift Projekte</p></li><li><p>Kompilieren, Testen und Codeanalyse</p></li><li><p>Performantes Backend von Gradle</p></li><li><p>Dockerhub: <a href="https://hub.docker.com/r/gradle/build-cache-node/">gradle/build-cache-node</a></p></li></ul></div></section><section id="maven"><h2>Maven</h2><div class="ulist"><ul><li><p>Eigene Extension</p></li><li><p>Release: Anfang März mit Gradle Enterprise 2019.1</p><div class="ulist"><ul><li><p>compile/test-compile und surefire/failsafe plugins</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Geplant:</p><div class="ulist"><ul><li><p>Unterstützung für weitere häufig verwendete Mojos</p></li><li><p>API zum Annotieren von Inputs/Outputs eigener Mojos</p></li><li><p>SPI um Mojos cacheable zu machen, die nicht von Haus aus unterstützt werden oder deren Source Code nicht geändert werden kann</p></li></ul></div></li></ul></div></aside></section></section>
+<section><section id="zuverlssige-builds"><h2>Zuverlässige Builds</h2></section><section id="anforderungen"><h2>Anforderungen</h2><div class="ulist"><ul><li><p>Daten um Verbesserungen/Verschlechterungen festzustellen</p><div class="ulist"><ul><li><p>Entwickler- und CI-Builds</p></li><li><p>Zuverlässigkeit</p></li><li><p>Geschwindigkeit</p></li></ul></div></li></ul></div></section><section id="was-sind-build-scans"><h2>Was sind Build Scans?</h2><div class="ulist"><ul><li><p>Aufzeichnung was in einem Build passiert ist</p></li><li><p>Permanente und teilbare URLs</p></li><li><p>Für Entwickler und Build Master</p></li></ul></div></section><section id="build-scans-demo"><h2>Build Scans - Demo</h2><div class="ulist"><ul><li><p><a href="https://e.grdev.net/s/37h3dlueevh2s">Build Scan</a></p></li><li><p><a href="https://e.grdev.net/scans">Scan Liste</a></p></li><li><p><a href="https://e.grdev.net/scans?search.tags=local">Entwickler Builds</a></p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Navigate to summary, open performance tab, open timeline tab, open plugins view</p></li><li><p>Show scan list</p></li><li><p>Build categorization via Tags</p></li></ul></div></aside></section><section id="maven-build-scans-summary"><div class="imageblock" style=""><img src="./images/maven-scan-summary.png" alt="maven scan summary" width="1280" height="80%" /></div></section><section id="maven-build-scans-timeline"><div class="imageblock" style=""><img src="./images/maven-scan-timeline.png" alt="maven scan timeline" width="1280" height="80%" /></div></section><section id="maven-build-scans-performance"><div class="imageblock" style=""><img src="./images/maven-scan-performance.png" alt="maven scan performance" width="1280" height="80%" /></div></section><section id="maven-build-scans-performance-configuration"><div class="imageblock" style=""><img src="./images/maven-scan-performance-conf.png" alt="maven scan performance conf" width="1280" height="80%" /></div></section><section id="maven-build-scans-performance-goals"><div class="imageblock" style=""><img src="./images/maven-scan-performance-goals.png" alt="maven scan performance goals" width="1280" height="80%" /></div></section><section id="maven-build-scans-performance-build-cache"><div class="imageblock" style=""><img src="./images/maven-scan-performance-build-cache.png" alt="maven scan performance build cache" width="1280" height="80%" /></div></section><section id="maven-build-scans-projects"><div class="imageblock" style=""><img src="./images/maven-scan-projects.png" alt="maven scan projects" width="1280" height="80%" /></div></section><section id="maven-build-scans-plugins"><div class="imageblock" style=""><img src="./images/maven-scan-plugins.png" alt="maven scan plugins" width="1280" height="80%" /></div></section><section id="maven-build-scans-switches-infrastructure"><div class="imageblock" style=""><img src="./images/maven-scan-switches-infrastructure.png" alt="maven scan switches infrastructure" width="1280" height="80%" /></div></section><section id="build-scans-anforderungen"><h2>Build Scans - Anforderungen</h2><div class="ulist"><ul><li><p>Maven/Gradle</p></li><li><p>Auf scans.gradle.com öffentlich/gratis</p><div class="ulist"><ul><li><p><a href="https://scans.gradle.com/s/nq7w6cjm72mak/" class="bare">https://scans.gradle.com/s/nq7w6cjm72mak/</a></p></li><li><p>Ohne Build Comparison</p></li></ul></div></li><li><p>Eigene Gradle Enterprise Instanz</p></li></ul></div></section><section id="gradle-3"><h2>Gradle</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="text language-text">$&gt; gradle build --scan
+...
+BUILD SUCCESSFUL in 8m 22s
+418 actionable tasks: 112 executed, 48 from cache, 258 up-to-date
+
+Publishing build scan...
+https://scans.gradle.com/s/lbmn7n4dngqgq</code></pre></div></div></section><section id="maven-2"><h2>Maven</h2><div class="ulist"><ul><li><p>Extension in <code>.mvn</code></p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="text language-text">$&gt; mvn package
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.507 s
+[INFO] Finished at: 2019-02-13T18:45:26+01:00
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] Publishing build scan...
+[INFO] https://scans.gradle.com/s/4r5fubfnzjo54
+[INFO]</code></pre></div></div></section><section id="performance-dashboard"><h2>Performance Dashboard</h2><div class="ulist"><ul><li><p>Beispiel: Performance Regression</p></li><li><p><a href="https://e.grdev.net/scans/performance?list.offset=0&amp;list.size=50&amp;list.sortColumn=startTime&amp;list.sortOrder=desc&amp;search.startTimeMax=1549321199999&amp;search.startTimeMin=1548543600000&amp;search.tags=CI&amp;search.tags=not:RERUN_TESTS&amp;search.tags=master&amp;search.tags=SanityCheck">Letzte Woche</a></p></li><li><p><a href="https://e.grdev.net/scans/performance?list.offset=0&amp;list.size=50&amp;list.sortColumn=startTime&amp;list.sortOrder=desc&amp;search.startTimeMax=1550080479731&amp;search.startTimeMin=1549475679731&amp;search.tags=CI&amp;search.tags=not:RERUN_TESTS&amp;search.tags=master&amp;search.tags=SanityCheck">Aktuell</a></p></li></ul></div></section><section id="cache-misses"><h2>Cache Misses</h2><div class="ulist"><ul><li><p>Eigene Tags für unerwartete Cache Misses</p></li><li><p>Beispiel: Gradle Build</p><div class="ulist"><ul><li><p><a href="https://e.grdev.net/scans?list.offset=0&amp;list.size=50&amp;list.sortColumn=startTime&amp;list.sortOrder=desc&amp;search.tags=cache_miss">Alle Cache Misses</a></p></li><li><p><a href="https://e.grdev.net/s/asqxkwl6ib46y">Ein Fall</a></p></li><li><p><a href="https://e.grdev.net/c/asqxkwl6ib46y/ea6nucbz4bvf6/task-inputs?toggledFileChanges=WyI3Z2hjdWhyb3pscHdtLWZpbGUtaW5wdXQtMCIsIjdnaGN1aHJvemxwd20tMC0wIiwiZmt2dXk3cXlqZ3Rtby1maWxlLWlucHV0LTAiLCJma3Z1eTdxeWpndG1vLTAtMCIsInhqeGRhcnl5emJzeXEtZmlsZS1pbnB1dC0wIiwieGp4ZGFyeXl6YnN5cS0wLTAiXQ#change-xjxdaryyzbsyq-0-0-0">Comparison</a></p></li></ul></div></li></ul></div></section><section id="eigene-analysen"><h2>Eigene Analysen</h2><div class="ulist"><ul><li><p>Export API benutzen!</p></li><li><p><a href="https://github.com/gradle/build-analysis-demo" class="bare">https://github.com/gradle/build-analysis-demo</a></p></li></ul></div>
+<div class="imageblock" style=""><img src="./images/build-analysis-data-pipeline.png" alt="build analysis data pipeline" width="80%" height="auto" /></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Gradle Enterprise wird einige Analysen bekommen</p></li><li><p>Gradle Enterprise soll kein BI Tool werden - gute Einsichten out-of-the-box, der Rest via Export API möglich</p></li></ul></div></aside></section><section id="dashboard"><div class="imageblock" style=""><img src="./images/build-dashboard.png" alt="build dashboard" width="1280" height="auto" /></div></section><section id="dashboard-2"><div class="imageblock" style=""><img src="./images/test-analytics.png" alt="test analytics" width="1280" height="auto" /></div>
+<aside class="notes"><div class="paragraph"><p>Über Flaky Test reden.</p></div></aside></section></section>
+<section id="vielen-dank"><h2>Vielen Dank!</h2><div class="ulist"><ul><li><p>Slides: <a href="https://wolfs.github.io/talk-developer-productivity-day-2019" class="bare">https://wolfs.github.io/talk-developer-productivity-day-2019</a></p></li><li><p><a href="https://gradle.org/training/" class="bare">https://gradle.org/training/</a></p><div class="ulist"><ul><li><p>Build Cache Deep Dive</p></li><li><p>Maven + Gradle Enterprise</p></li></ul></div></li><li><p><a href="https://www.youtube.com/channel/UCvClhveoEjokKIuBAsSjEwQ/videos">Youtube channel</a></p></li><li><p>Gradle Enterprise: <a href="https://gradle.com" class="bare">https://gradle.com</a></p></li></ul></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: true,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'gradle',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><div id="footer">
+  <div style="width:100%">
+     <div style="display:inline">Extreme developer productivity with Gradle 4.0 - @gradle</div>
+     <div style="display:inline; position:absolute; right: 50px;"><img src="images/gradle-logo-min.png"></div>
+  </div>
+</div></body></html>
