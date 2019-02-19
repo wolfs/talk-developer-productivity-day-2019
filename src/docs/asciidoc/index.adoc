@@ -159,7 +159,7 @@ BUILD SUCCESSFUL
 === Build Scans - Demo
 * https://e.grdev.net/s/37h3dlueevh2s[Build Scan]
 * https://e.grdev.net/scans[Scan Liste]
-* https://e.grdev.net/scans?tags=local[Entwickler Builds]
+* https://e.grdev.net/scans?search.tags=local[Entwickler Builds]
 
 [NOTE.speaker]
 --
@@ -167,6 +167,41 @@ BUILD SUCCESSFUL
 * Show scan list
 * Build categorization via Tags
 --
+[%notitle]
+=== Maven Build Scans - Summary
+image::maven-scan-summary.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Timeline
+image::maven-scan-timeline.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Performance
+image::maven-scan-performance.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Performance Configuration
+image::maven-scan-performance-conf.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Performance Goals
+image::maven-scan-performance-goals.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Performance Build Cache
+image::maven-scan-performance-build-cache.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Projects
+image::maven-scan-projects.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Plugins
+image::maven-scan-plugins.png[height=80%]
+
+[%notitle]
+=== Maven Build Scans - Switches Infrastructure
+image::maven-scan-switches-infrastructure.png[height=80%]
 
 === Build Scans - Anforderungen
 
